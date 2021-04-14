@@ -4,6 +4,7 @@ var app = new Vue({
     risposta:[],
     searchtext: '',
     consigliati:[],
+    text: '',
   },
   mounted(){
       axios.get("https://api.themoviedb.org/3/trending/tv/day?api_key=55ed5a7c338e0f33b35608c6f63cee1b")
@@ -17,6 +18,7 @@ var app = new Vue({
   methods:{
     search: function () {
       this.risposta =[];
+      this.text = this.searchtext
       axios.get(`https://api.themoviedb.org/3/search/movie?api_key=55ed5a7c338e0f33b35608c6f63cee1b&query=${this.searchtext}&language=it-IT`)
         .then((response) => {
           this.movie = response.data.results;

@@ -69,9 +69,10 @@
             <span class="visually-hidden">Next</span>
           </button>
         </div>
-
+      <div v-if="text" class="searched_text">
+        <h2>Cerca: {{text}}</h2>
+      </div>
       <div class="searched">
-        <h2>{{searchtext}}</h2>
         <div v-if="pelicula.poster_path" class="card_film" v-for="pelicula in risposta">
           <img  :src= "`https://image.tmdb.org/t/p/w342${pelicula.poster_path}`" alt="">
           <div class="card_film_hover ">
