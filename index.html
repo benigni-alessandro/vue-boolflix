@@ -20,7 +20,7 @@
           <div class="i-navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" @click="refresh" aria-current="page" href="#">Home</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Film</a>
@@ -69,7 +69,7 @@
           <span class="visually-hidden">Next</span>
         </button>
       </div>
-      <div class="film_tv">
+      <div v-if="!text" class="film_tv">
         <!-- FILM  -->
         <div class="searched_text">
           <h2>Film</h2>

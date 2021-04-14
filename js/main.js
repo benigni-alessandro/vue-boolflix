@@ -82,6 +82,9 @@ var app = new Vue({
         return img.name;
       }
     },
+    refresh:function () {
+      this.text = ''
+    }
 
 
    }
