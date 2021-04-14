@@ -5,13 +5,30 @@ var app = new Vue({
     searchtext: '',
     consigliati:[],
     text: '',
+    movie_consigliati: [],
+    serie_consigliate: [],
+
   },
   mounted(){
-      axios.get("https://api.themoviedb.org/3/trending/tv/day?api_key=55ed5a7c338e0f33b35608c6f63cee1b")
+      axios.get("https://api.themoviedb.org/3/trending/all/day?api_key=55ed5a7c338e0f33b35608c6f63cee1b&language=it-IT")
         .then((response) => {
           this.film_tendenza = response.data.results;
           this.film_tendenza.forEach((movie, i) => {
             this.consigliati.push(movie);
+          });
+      })
+      axios.get("https://api.themoviedb.org/3/trending/movie/day?api_key=55ed5a7c338e0f33b35608c6f63cee1b&language=it-IT")
+        .then((response) => {
+          this.film = response.data.results;
+          this.film.forEach((films, i) => {
+            this.movie_consigliati.push(films);
+          });
+      })
+      axios.get("https://api.themoviedb.org/3/trending/tv/day?api_key=55ed5a7c338e0f33b35608c6f63cee1b&language=it-IT")
+        .then((response) => {
+          this.series = response.data.results;
+          this.series.forEach((series, i) => {
+            this.serie_consigliate.push(series);
           });
       })
   },

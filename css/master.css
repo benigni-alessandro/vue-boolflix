@@ -40,6 +40,23 @@
   color: white;
   font-size: 14px;
 }
+/* FILM CONSIGLIATI */
+.films{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow-x: auto;
+  height: 400px;
+  width: auto;
+}
+.series{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow-x: auto;
+  height: 400px;
+  width: auto;
+}
 /* RICERCATI */
 .searched{
   display: flex;
@@ -141,20 +158,21 @@
   position: relative;
 }
 .carousel-item .slide{
-  height:600px;
+  height: 500px;
   width: 100%;
-  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-
 }
 .carousel-item:hover .hover_peli{
   visibility: visible;
 }
+
 .hover_peli{
   width: 400px;
-  height: 600px;
-  padding: 20px;
+  height: 500px;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
   visibility: hidden;
   background-color: rgba(26, 188, 156, 0.9);
   position: absolute;
@@ -163,6 +181,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: auto;
 }
 .hover_peli .voto{
   margin-top: 20px;
