@@ -51,7 +51,7 @@
 }
 .card_film{
   margin: 30px 30px;
-  height: 350px;
+  height: 400px;
   width: 300px;
   background-color: black;
   display: flex;
@@ -64,7 +64,7 @@
 
 }
 .card_film img{
-  height: 350px;
+  height: 400px;
   width: 300px;
   background-position: center;
   background-repeat: no-repeat;

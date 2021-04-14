@@ -37,38 +37,42 @@
           </div>
         </div>
       </nav>
-
-        <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active" data-bs-interval="10000">
-              <img src="./img/space1.jpeg" class="d-block w-100" alt="...">
+      <!-- CAROUSEL FILM E SERIE CONSIGLIATE -->
+      <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="10000">
+            <img src="./img/space1.jpeg" class="d-block w-100" alt="...">
+          </div>
+          <div v-for="img in consigliati" class="carousel-item" data-bs-interval="2000">
+            <div class="hover_peli">
+              <h3>{{get_title(img)}}</h3>
+              <small>{{img.overview}}</small>
+              <p class="voto">
+                <i :class="(getvote(img) >= 1) ? 'acceso' : ''" class="fas fa-star"></i>
+                <i :class="(getvote(img) >= 2) ? 'acceso' : ''" class="fas fa-star"></i>
+                <i :class="(getvote(img) >= 3) ? 'acceso' : ''" class="fas fa-star"></i>
+                <i :class="(getvote(img) >= 4) ? 'acceso' : ''" class="fas fa-star"></i>
+                <i :class="(getvote(img) == 5) ? 'acceso' : ''" class="fas fa-star"></i>
+                {{img.vote_average}}
+              </p>
             </div>
-            <div v-for="img in consigliati" class="carousel-item" data-bs-interval="2000">
-              <div class="hover_peli">
-                <h3>{{get_title(img)}}</h3>
-                <small>{{img.overview}}</small>
-                <p class="voto">
-                  <i :class="(getvote(img) >= 1) ? 'acceso' : ''" class="fas fa-star"></i>
-                  <i :class="(getvote(img) >= 2) ? 'acceso' : ''" class="fas fa-star"></i>
-                  <i :class="(getvote(img) >= 3) ? 'acceso' : ''" class="fas fa-star"></i>
-                  <i :class="(getvote(img) >= 4) ? 'acceso' : ''" class="fas fa-star"></i>
-                  <i :class="(getvote(img) == 5) ? 'acceso' : ''" class="fas fa-star"></i>
-                  {{img.vote_average}}
-                </p>
-              </div>
-              <div class="slide" :style="`background-image: url('https://image.tmdb.org/t/p/original${img.backdrop_path}')`">
-              </div>
+            <div class="slide" :style="`background-image: url('https://image.tmdb.org/t/p/original${img.backdrop_path}')`">
             </div>
           </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
         </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+          </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      <!-- FILM  -->
+
+
+      <!-- RICERCA FILM O SERIE TV -->
       <div v-if="text" class="searched_text">
         <h2>Cerca: {{text}}</h2>
       </div>
