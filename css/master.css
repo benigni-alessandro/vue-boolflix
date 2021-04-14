@@ -1,11 +1,15 @@
 #root{
-  height: 200vh;
+  min-height: 200vh;
   background-color: black;
+  padding-bottom: 30px;
 }
 /* NAVBAR */
 .navbar{
   background-color: #13294A;
   height: 60px;
+  width: 100%;
+  position: fixed;
+  z-index: 999;
 }
 .input-group {
   width: 300px;
@@ -17,6 +21,7 @@
 .navbar-brand img{
   height: 50px;
   margin-left: 50px;
+  margin-right: 60px;
 }
 .i-navbar-collapse{
   display: flex;
@@ -148,6 +153,7 @@
 #carouselExampleInterval{
   height: 500px;
   width: 100%;
+  padding-top: 60px;
 }
 .carousel-item {
   height: 500px;
@@ -183,7 +189,206 @@
 .hover_peli .voto{
   margin-top: 20px;
 }
+
 .hover_peli h3{
   color: white;
   font-weight: bolder;
+}
+@media screen and (min-width: 768px) and (max-width: 991px){
+  #root{
+    padding-bottom: 30px;
+    min-height: 200vh;
+  }
+  #carouselExampleInterval{
+    padding-top: 50px;
+  }
+  .film_tv{
+    margin-bottom: 30px;
+  }
+  .container-fluid{
+    height: 50px;
+  }
+  /* NAVBAR */
+  .navbar{
+    background-color: #13294A;
+    height: 50px;
+    padding: 0px;
+    display: flex;
+    align-items: center;
+  }
+  .navbar-nav.me-auto.mb-2.mb-lg-0{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 0px!important;
+    margin-right: 0px!important;
+  }
+  .nav-link {
+    padding: 0px;
+  }
+  .input-group {
+    width: 300px;
+  }
+  .navbar-nav .nav-item a{
+    color: white;
+    margin-right: 20px;
+  }
+  .navbar-brand img{
+    height: 40px;
+    margin-left: 50px;
+    margin-right: 10px;
+  }
+  .i-navbar-collapse{
+    display: flex;
+  }
+  .input-group input{
+    border-radius: 60px;
+    border: 0px;
+    border-left: 0px;
+    color: white;
+    background-color: #34393C;
+    font-size: 15px;
+  }
+  .input-group span{
+    border-radius: 100px;
+    border-right: 0px;
+    border: 0px;
+    font-size: 10px;
+    background-color: #34393C;
+  }
+  .fas.fa-search{
+    color: white;
+    font-size: 14px;
+  }
+  .carousel-item img{
+    height: 500px;
+  }
+}
+@media screen and (max-width: 767px){
+  #root{
+    padding-bottom: 30px;
+    min-height: 200vh;
+  }
+  .film_tv{
+    margin-bottom: 30px;
+    padding-top: 50px;
+  }
+  .container-fluid{
+    height: 50px;
+
+  }
+  /* NAVBAR */
+  .navbar{
+    background-color: #13294A;
+    height: 50px;
+    padding: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .navbar-nav.me-auto.mb-2.mb-lg-0{
+    display: none;
+  }
+  .nav-link {
+    padding: 0px;
+  }
+  .nav-link a{
+    font-size: 15px;
+  }
+  .input-group {
+    width: 150px;
+  }
+  .navbar-nav .nav-item a{
+    color: white;
+    margin-right: 20px;
+  }
+  .navbar-brand img{
+    height: 40px;
+    margin: 0px;
+  }
+  .i-navbar-collapse{
+    display: flex;
+  }
+  .input-group input{
+    border-radius: 60px;
+    border: 0px;
+    border-left: 0px;
+    color: white;
+    background-color: #34393C;
+    font-size: 15px;
+  }
+  .input-group span{
+    border-radius: 100px;
+    border-right: 0px;
+    border: 0px;
+    font-size: 10px;
+    background-color: #34393C;
+  }
+  .fas.fa-search{
+    color: white;
+    font-size: 14px;
+  }
+
+  #carouselExampleInterval{
+    padding: 0px;
+    display: none;
+  }
+  .searched{
+    display: flex;
+    justify-content: flex-start;
+    overflow-x: auto;
+    height: 300px;
+    width: auto;
+  }
+  .card_film{
+    margin: 0px 30px;
+    height: 100%;
+    width: 200px;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid transparent;
+    border-radius: 15px;
+    position: relative;
+  }
+  .card_film img{
+    height: 100%;
+    width: 200px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 1px solid transparent;
+    border-radius: 15px;
+  }
+  .card_film_hover{
+    width: 100%;
+    height: 100%;
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    background-color: rgba(26, 188, 156, 0.9);
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 15px;
+  }
+  .films{
+    display: flex;
+    justify-content: flex-start;
+    overflow-x: auto;
+    height: 300px;
+    width: auto;
+  }
+  .series{
+    display: flex;
+    justify-content: flex-start;
+    overflow-x: auto;
+    height: 300px;
+    width: auto;
+  }
 }
