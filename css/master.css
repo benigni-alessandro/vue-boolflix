@@ -43,7 +43,6 @@
 /* FILM CONSIGLIATI */
 .films{
   display: flex;
-  align-items: center;
   justify-content: flex-start;
   overflow-x: auto;
   height: 400px;
@@ -51,7 +50,6 @@
 }
 .series{
   display: flex;
-  align-items: center;
   justify-content: flex-start;
   overflow-x: auto;
   height: 400px;
@@ -60,15 +58,14 @@
 /* RICERCATI */
 .searched{
   display: flex;
-  align-items: center;
   justify-content: flex-start;
   overflow-x: auto;
   height: 400px;
   width: auto;
 }
 .card_film{
-  margin: 30px 30px;
-  height: 400px;
+  margin: 0px 30px;
+  height: 100%;
   width: 300px;
   background-color: black;
   display: flex;
@@ -78,10 +75,9 @@
   border: 1px solid transparent;
   border-radius: 15px;
   position: relative;
-
 }
 .card_film img{
-  height: 400px;
+  height: 100%;
   width: 300px;
   background-position: center;
   background-repeat: no-repeat;
@@ -96,6 +92,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   visibility: hidden;
   background-color: rgba(26, 188, 156, 0.9);
   position: absolute;
