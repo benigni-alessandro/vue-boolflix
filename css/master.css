@@ -1,9 +1,6 @@
 #root{
-  height: 100vh;
-  /* background-image: url('../img/space1.jpeg'); */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  height: 200vh;
+  background-color: black;
 }
 /* NAVBAR */
 .navbar{
@@ -47,10 +44,8 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  flex-direction: row;
-  overflow-x: auto;
-  height: 600px;
-  padding: 5%;
+  overflow-x: scroll;
+  height: 500px;
 }
 .card_film img{
   width: 100%;
@@ -107,4 +102,65 @@
 }
 .acceso{
   color: #FFD400;
+}
+.immagini{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fa-chevron-right{
+  font-size: 40px;
+  padding-left: 30px;
+}
+.fa-chevron-left{
+  font-size: 40px;
+  padding-right: 30px;
+}
+.fa-circle{
+  color: lightgrey;
+  margin: 50px 10px;
+}
+.slider i.active{
+  color: blue;
+}
+#carouselExampleInterval{
+  height: 500px;
+  width: 100%;
+}
+.carousel-item {
+  height: 500px;
+  width: 100%;
+  position: relative;
+}
+.carousel-item .slide{
+  height:600px;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+.carousel-item:hover .hover_peli{
+  visibility: visible;
+}
+.hover_peli{
+  width: 400px;
+  height: 600px;
+  padding: 20px;
+  visibility: hidden;
+  background-color: rgba(26, 188, 156, 0.9);
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.hover_peli .voto{
+  margin-top: 20px;
+}
+.hover_peli h3{
+  color: white;
+  font-weight: bolder;
 }

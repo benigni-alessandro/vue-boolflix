@@ -3,9 +3,20 @@ var app = new Vue({
   data: {
     risposta:[],
     searchtext: '',
+    consigliati:[],
+  },
+  mounted(){
+      axios.get("https://api.themoviedb.org/3/trending/tv/day?api_key=55ed5a7c338e0f33b35608c6f63cee1b")
+        .then((response) => {
+          this.film_tendenza = response.data.results;
+          this.film_tendenza.forEach((movie, i) => {
+            this.consigliati.push(movie);
+          });
+      })
   },
   methods:{
     search: function () {
+      this.risposta =[];
       axios.get(`https://api.themoviedb.org/3/search/movie?api_key=55ed5a7c338e0f33b35608c6f63cee1b&query=${this.searchtext}&language=it-IT`)
         .then((response) => {
           this.movie = response.data.results;
@@ -44,7 +55,15 @@ var app = new Vue({
       let voto = parseInt(voto_decimale * 5 / 10);
       console.log(voto);
       return voto;
-    }
+    },
+    get_title:function (img) {
+      if (img.title) {
+        return img.title;
+      } else {
+        return img.name;
+      }
+    },
+
 
    }
 });
