@@ -38,7 +38,7 @@
             <img src="./img/space1.jpeg" class="d-block w-100" alt="...">
           </div>
           <div v-for="img in consigliati" class="carousel-item" data-bs-interval="2000">
-            <div class="hover_peli">
+            <div class="hover_peli"  @mouseover="getcast(img.id)" @mouseleave="pulisci">
               <h3>{{get_title(img)}}</h3>
               <small>{{img.overview}}</small>
               <p class="voto">
@@ -49,6 +49,10 @@
                 <i :class="(getvote(img) == 5) ? 'acceso' : ''" class="fas fa-star"></i>
                 {{img.vote_average}}
               </p>
+              <div class="cast">
+                <p>Cast:</p>
+                <p v-if="i < 5" v-for="(actor,i) in actors">{{actor.name}}</p>
+              </div>
             </div>
             <div class="slide" :style="`background-image: url('https://image.tmdb.org/t/p/original${img.backdrop_path}')`">
             </div>
@@ -71,7 +75,7 @@
         <div class="films">
           <div class="card_film" v-for="films in movie_consigliati">
             <img  :src= "`https://image.tmdb.org/t/p/w342${films.poster_path}`" alt="">
-            <div class="card_film_hover ">
+            <div class="card_film_hover" @mouseover="getcast(films.id)" @mouseleave="pulisci">
               <h4>{{get_titolo(films)}}</h4>
               <p>Titolo originale: {{get_original_title(films)}}</p>
               <p>Lingua originale: <img class="bandierina" :src="(films.original_language == 'en') ? `https://www.countryflags.io/us/flat/64.png` : `https://www.countryflags.io/${films.original_language}/flat/64.png`">{{films.original_language}}</p>
@@ -83,7 +87,11 @@
                 <i :class="(getvote(films) == 5) ? 'acceso' : ''" class="fas fa-star"></i>
                 {{films.vote_average}}
               </p>
-              <!-- <p v-for="actor in castone">{{actor.name}}</p> -->
+              <div class="cast">
+                <p>Cast:</p>
+                <p v-if="i < 5" v-for="(actor,i) in actors">{{actor.name}}</p>
+              </div>
+
             </div>
           </div>
         </div>
@@ -94,7 +102,7 @@
         <div class="series">
           <div class="card_film" v-for="series in serie_consigliate">
             <img  :src= "`https://image.tmdb.org/t/p/w342${series.poster_path}`" alt="">
-            <div class="card_film_hover ">
+            <div class="card_film_hover" @mouseover="getcast(series.id)" @mouseleave="pulisci">
               <h4>{{get_titolo(series)}}</h4>
               <p>Titolo originale: {{get_original_title(series)}}</p>
               <p>Lingua originale: <img class="bandierina" :src="(series.original_language == 'en') ? `https://www.countryflags.io/us/flat/64.png` : `https://www.countryflags.io/${series.original_language}/flat/64.png`">{{series.original_language}}</p>
@@ -106,14 +114,14 @@
                 <i :class="(getvote(series) == 5) ? 'acceso' : ''" class="fas fa-star"></i>
                 {{series.vote_average}}
               </p>
+              <div class="cast">
+                <p>Cast:</p>
+                <p v-if="i < 5" v-for="(actor,i) in actors">{{actor.name}}</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-
-
-
-
       <!-- RICERCA FILM O SERIE TV -->
       <div v-if="text" class="searched_text">
         <h2>Cerca: {{text}}</h2>
@@ -121,7 +129,7 @@
       <div v-if="text" class="searched">
         <div v-if="pelicula.poster_path" class="card_film" v-for="pelicula in risposta">
           <img  :src= "`https://image.tmdb.org/t/p/w342${pelicula.poster_path}`" alt="">
-          <div class="card_film_hover ">
+          <div class="card_film_hover"  @mouseover="getcast(pelicula.id)" @mouseleave="pulisci">
             <h4>{{get_titolo(pelicula)}}</h4>
             <p>Titolo originale: {{get_original_title(pelicula)}}</p>
             <p>Lingua originale: <img class="bandierina"  :src="(pelicula.original_language == 'en') ? `https://www.countryflags.io/us/flat/64.png` : `https://www.countryflags.io/${pelicula.original_language}/flat/64.png`">{{pelicula.original_language}}</p>
@@ -133,7 +141,10 @@
               <i :class="(getvote(pelicula) == 5) ? 'acceso' : ''" class="fas fa-star"></i>
               {{pelicula.vote_average}}
             </p>
-
+            <div class="cast">
+              <p>Cast:</p>
+              <p v-if="i < 5" v-for="(actor,i) in actors">{{actor.name}}</p>
+            </div>
           </div>
         </div>
       </div>

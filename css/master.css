@@ -194,6 +194,9 @@
   color: white;
   font-weight: bolder;
 }
+
+
+
 @media screen and (min-width: 768px) and (max-width: 991px){
   #root{
     padding-bottom: 30px;

@@ -7,7 +7,7 @@ var app = new Vue({
     text: '',
     movie_consigliati: [],
     serie_consigliate: [],
-    castone: [{}],
+    actors:[],
 
   },
   mounted(){
@@ -25,18 +25,8 @@ var app = new Vue({
           this.film.forEach((films, i) => {
             this.movie_consigliati.push(films);
           });
-          this.movie_consigliati.forEach((films, i) => {
-            axios.get(`https://api.themoviedb.org/3/movie/${films.id}/credits?api_key=55ed5a7c338e0f33b35608c6f63cee1b&language=it-IT`)
-              .then((response) => {
-                console.log(response.data.cast);
-                // this.attori = response.data.cast;
-                  response.data.cast.forEach((attore, index) => {
-                      this.castone.push(attore);
-                })
-            });
-          });
 
-      });
+      })
       axios.get("https://api.themoviedb.org/3/trending/tv/day?api_key=55ed5a7c338e0f33b35608c6f63cee1b&language=it-IT")
         .then((response) => {
           this.series = response.data.results;
@@ -64,7 +54,7 @@ var app = new Vue({
               this.risposta.push(serie);
 
             });
-        })
+        });
           this.searchtext = '';
       })
       console.log(this.risposta);
@@ -99,6 +89,28 @@ var app = new Vue({
     refresh:function () {
       this.text = ''
     },
+    getcast: function (id) {
+        axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=55ed5a7c338e0f33b35608c6f63cee1b&language=it-IT`)
+          .then((response) => {
+            response.data.cast.forEach((attori, i) => {
+              this.actors.push(attori)
+            })
+            .catch(error => {
+               console.log(error);
+           });
+       });
+       axios.get(`https://api.themoviedb.org/3/tv/${id}/credits?api_key=55ed5a7c338e0f33b35608c6f63cee1b&language=it-IT`)
+         .then((response) => {
+           response.data.cast.forEach((attori, i) => {
+             this.actors.push(attori)
+           });
+      });
+
+       return this.actors;
+     },
+     pulisci: function () {
+       this.actors = [];
+     },
 
    }
 });
