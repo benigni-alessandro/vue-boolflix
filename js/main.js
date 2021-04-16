@@ -5,9 +5,13 @@ var app = new Vue({
     searchtext: '',
     consigliati:[],
     text: '',
+    serie: [],
+    film_tendenza : [],
+    movie: [],
     movie_consigliati: [],
     serie_consigliate: [],
     actors:[],
+    film: [],
 
   },
   mounted(){
@@ -97,6 +101,7 @@ var app = new Vue({
             })
             .catch(error => {
                console.log(error);
+               return this.actors;
            });
        });
        axios.get(`https://api.themoviedb.org/3/tv/${id}/credits?api_key=55ed5a7c338e0f33b35608c6f63cee1b&language=it-IT`)
