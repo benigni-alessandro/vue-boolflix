@@ -116,6 +116,17 @@ var app = new Vue({
      pulisci: function () {
        this.actors = [];
      },
+     opennav: function () {
+        var vm = this;
+        vm.$refs.mySidenav.style.width = "250px";
+        vm.$refs.main.style.marginleft = "250px";
+
+     },
+     closenav:function () {
+       var vm = this;
+       vm.$refs.mySidenav.style.width = "0";
+       vm.$refs.main.style.marginleft = "200px";
+     }
 
    }
 });

@@ -4,6 +4,70 @@
   padding-bottom: 30px;
 }
 /* NAVBAR */
+.sidenav{
+  height: 100%;
+  width: 0px;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  background-color: #132A4B;
+  overflow-x: hidden;
+  transition: 0.5s;
+  margin-top: 60px;
+
+}
+.userclass{
+  display: none;
+}
+.fas.fa-user{
+  font-size: 20px;
+  color: white;
+}
+.seleziona_genere{
+  display: flex;
+  flex-direction: column;
+  height: 60px;
+}
+.utente span{
+  color: white;
+  margin-left: 8px;
+}
+.utente{
+  padding-top: 10px;
+}
+
+.sidenav .seleziona_genere a{
+  color: lightgrey;
+  text-decoration: none;
+  margin-left: 20px;
+  margin-bottom: 15px;
+}
+.sidenav .seleziona_genere a:hover{
+  color: white;
+}
+.fas.fa-times{
+  color: lightgrey;
+  margin: 20px 20px 30px;
+  font-size: 20px;
+}
+.fas.fa-times:hover{
+  color: white;
+}
+.fas.fa-bell{
+  font-size: 20px;
+  color: white;
+  padding-top: 11px;
+}
+.menu{
+  background-color: #13294A;
+  border: 2px solid white;
+  color: white;
+  height: 30px;
+}
+.menu:hover{
+  height: 32px;
+}
 .navbar{
   background-color: #13294A;
   height: 60px;
@@ -14,9 +78,9 @@
 .input-group {
   width: 300px;
 }
-.navbar-nav .nav-item a{
+.navbar-nav .nav-item a, .navbar-nav .nav-item i{
   color: white;
-  margin-right: 50px;
+  margin: 0 20px;
 }
 .navbar-brand img{
   height: 50px;
@@ -33,6 +97,11 @@
   color: white;
   background-color: #34393C;
   font-size: 15px;
+}
+.input-group input:focus{
+  color: white;
+  background-color: #34393C;
+  box-shadow: 0 0 0 0;
 }
 .input-group span{
   border-radius: 100px;
@@ -197,19 +266,72 @@
 
 
 
+
 @media screen and (min-width: 768px) and (max-width: 991px){
   #root{
     padding-bottom: 30px;
     min-height: 200vh;
   }
+  .sidenav{
+    margin-top: 50px;
+  }
+  .fas.fa-user{
+    font-size: 20px;
+    color: white;
+  }
+  .utente{
+    display: none;
+  }
+  .username{
+    margin-left: 7px;
+  }
+  .userclass{
+    margin-top: 350px;
+    display: block;
+  }
+  .userclass  p{
+    margin-top: 15px;
+  }
+  .fas.fa-bell i{
+    font-size: 5px;
+    padding-top: 15px;
+    height: 50px;
+  }
+
+  .sidenav .seleziona_genere a{
+    color: lightgrey;
+    text-decoration: none;
+    margin-left: 20px;
+    margin-bottom: 15px;
+  }
+  .sidenav .seleziona_genere a:hover{
+    color: white;
+  }
+  .fas.fa-times{
+    color: lightgrey;
+    margin: 20px 20px 30px;
+    font-size: 20px;
+  }
+  .fas.fa-times:hover{
+    color: white;
+  }
+  .fas.fa-bell{
+    font-size: 20px;
+    color: white;
+    padding-top: 6px;
+  }
   #carouselExampleInterval{
     padding-top: 50px;
   }
   .film_tv{
-    margin-bottom: 30px;
+    margin-bottom: 10px;
   }
   .container-fluid{
     height: 50px;
+    display: flex!important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: space-around!important;
   }
   /* NAVBAR */
   .navbar{
@@ -267,10 +389,17 @@
     height: 500px;
   }
 }
+
+
+
+
 @media screen and (max-width: 767px){
   #root{
     padding-bottom: 30px;
-    min-height: 200vh;
+    min-height: 100vh;
+  }
+  .sidenav{
+    margin-top: 40px;
   }
   .film_tv{
     margin-bottom: 30px;
@@ -278,7 +407,13 @@
   }
   .container-fluid{
     height: 50px;
-
+  }
+  .userclass{
+    margin-top: 300px;
+    display: block;
+  }
+  .userclass  p{
+    margin-top: 15px;
   }
   /* NAVBAR */
   .navbar{
