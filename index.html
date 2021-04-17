@@ -47,6 +47,9 @@
               </div>
           </div>
         </nav>
+
+
+
         <!-- CAROUSEL FILM E SERIE CONSIGLIATE -->
         <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">
@@ -54,7 +57,23 @@
               <img src="./img/space1.jpeg" class="d-block w-100" alt="...">
             </div>
             <div v-for="img in consigliati" class="carousel-item" data-bs-interval="2000">
-              <div class="hover_peli"  @mouseover="getcast(img.id)" @mouseleave="pulisci">
+              <div v-if="img.media_type == 'movie'" class="hover_peli"  @mouseover="getcast(img.id)" @mouseleave="pulisci">
+                <h3>{{get_title(img)}}</h3>
+                <small>{{img.overview}}</small>
+                <p class="voto">
+                  <i :class="(getvote(img) >= 1) ? 'acceso' : ''" class="fas fa-star"></i>
+                  <i :class="(getvote(img) >= 2) ? 'acceso' : ''" class="fas fa-star"></i>
+                  <i :class="(getvote(img) >= 3) ? 'acceso' : ''" class="fas fa-star"></i>
+                  <i :class="(getvote(img) >= 4) ? 'acceso' : ''" class="fas fa-star"></i>
+                  <i :class="(getvote(img) == 5) ? 'acceso' : ''" class="fas fa-star"></i>
+                  {{img.vote_average}}
+                </p>
+                <div class="cast">
+                  <p>Cast:</p>
+                  <p v-if="i < 5" v-for="(actor,i) in actors">{{actor.name}}</p>
+                </div>
+              </div>
+              <div v-else class="hover_peli"  @mouseover="getcastserie(img.id)" @mouseleave="pulisci">
                 <h3>{{get_title(img)}}</h3>
                 <small>{{img.overview}}</small>
                 <p class="voto">
@@ -83,6 +102,10 @@
             <span class="visually-hidden">Next</span>
           </button>
         </div>
+
+
+
+
         <div v-if="!text" class="film_tv">
           <!-- FILM  -->
           <div class="searched_text">
@@ -118,7 +141,24 @@
           <div class="series">
             <div class="card_film" v-for="series in serie_consigliate">
               <img  :src= "`https://image.tmdb.org/t/p/w342${series.poster_path}`" alt="">
-              <div class="card_film_hover" @mouseover="getcast(series.id)" @mouseleave="pulisci">
+              <div v-if="series.media_type == 'movie'" class="card_film_hover" @mouseover="getcast(series.id)" @mouseleave="pulisci">
+                <h4>{{get_titolo(series)}}</h4>
+                <p>Titolo originale: {{get_original_title(series)}}</p>
+                <p>Lingua originale: <img class="bandierina" :src="(series.original_language == 'en') ? `https://www.countryflags.io/us/flat/64.png` : `https://www.countryflags.io/${series.original_language}/flat/64.png`">{{series.original_language}}</p>
+                <p class="voto">
+                  <i :class="(getvote(series) >= 1) ? 'acceso' : ''" class="fas fa-star"></i>
+                  <i :class="(getvote(series) >= 2) ? 'acceso' : ''" class="fas fa-star"></i>
+                  <i :class="(getvote(series) >= 3) ? 'acceso' : ''" class="fas fa-star"></i>
+                  <i :class="(getvote(series) >= 4) ? 'acceso' : ''" class="fas fa-star"></i>
+                  <i :class="(getvote(series) == 5) ? 'acceso' : ''" class="fas fa-star"></i>
+                  {{series.vote_average}}
+                </p>
+                <div class="cast">
+                  <p>Cast:</p>
+                  <p v-if="i < 5" v-for="(actor,i) in actors">{{actor.name}}</p>
+                </div>
+              </div>
+              <div v-else class="card_film_hover" @mouseover="getcastserie(series.id)" @mouseleave="pulisci">
                 <h4>{{get_titolo(series)}}</h4>
                 <p>Titolo originale: {{get_original_title(series)}}</p>
                 <p>Lingua originale: <img class="bandierina" :src="(series.original_language == 'en') ? `https://www.countryflags.io/us/flat/64.png` : `https://www.countryflags.io/${series.original_language}/flat/64.png`">{{series.original_language}}</p>
@@ -138,6 +178,8 @@
             </div>
           </div>
         </div>
+
+
         <!-- RICERCA FILM O SERIE TV -->
         <div v-if="text" class="searched_text">
           <h2>Cerca: {{text}}</h2>
@@ -145,7 +187,24 @@
         <div v-if="text" class="searched">
           <div v-if="pelicula.poster_path" class="card_film" v-for="pelicula in risposta">
             <img  :src= "`https://image.tmdb.org/t/p/w342${pelicula.poster_path}`" alt="">
-            <div class="card_film_hover"  @mouseover="getcast(pelicula.id)" @mouseleave="pulisci">
+            <div v-if="pelicula.media_type == 'movie'" class="card_film_hover"  @mouseover="getcast(pelicula.id)" @mouseleave="pulisci">
+              <h4>{{get_titolo(pelicula)}}</h4>
+              <p>Titolo originale: {{get_original_title(pelicula)}}</p>
+              <p>Lingua originale: <img class="bandierina"  :src="(pelicula.original_language == 'en') ? `https://www.countryflags.io/us/flat/64.png` : `https://www.countryflags.io/${pelicula.original_language}/flat/64.png`">{{pelicula.original_language}}</p>
+              <p class="voto">
+                <i :class="(getvote(pelicula) >= 1) ? 'acceso' : ''" class="fas fa-star"></i>
+                <i :class="(getvote(pelicula) >= 2) ? 'acceso' : ''" class="fas fa-star"></i>
+                <i :class="(getvote(pelicula) >= 3) ? 'acceso' : ''" class="fas fa-star"></i>
+                <i :class="(getvote(pelicula) >= 4) ? 'acceso' : ''" class="fas fa-star"></i>
+                <i :class="(getvote(pelicula) == 5) ? 'acceso' : ''" class="fas fa-star"></i>
+                {{pelicula.vote_average}}
+              </p>
+              <div class="cast">
+                <p>Cast:</p>
+                <p v-if="i < 5" v-for="(actor,i) in actors">{{actor.name}}</p>
+              </div>
+            </div>
+            <div v-else class="card_film_hover"  @mouseover="getcastserie(pelicula.id)" @mouseleave="pulisci">
               <h4>{{get_titolo(pelicula)}}</h4>
               <p>Titolo originale: {{get_original_title(pelicula)}}</p>
               <p>Lingua originale: <img class="bandierina"  :src="(pelicula.original_language == 'en') ? `https://www.countryflags.io/us/flat/64.png` : `https://www.countryflags.io/${pelicula.original_language}/flat/64.png`">{{pelicula.original_language}}</p>

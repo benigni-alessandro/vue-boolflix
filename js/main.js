@@ -99,19 +99,19 @@ var app = new Vue({
             response.data.cast.forEach((attori, i) => {
               this.actors.push(attori)
             })
-            .catch(error => {
-               console.log(error);
-               return this.actors;
-           });
        });
+       return this.actors;
+     },
+
+     getcastserie: function (id) {
        axios.get(`https://api.themoviedb.org/3/tv/${id}/credits?api_key=55ed5a7c338e0f33b35608c6f63cee1b&language=it-IT`)
          .then((response) => {
            response.data.cast.forEach((attori, i) => {
              this.actors.push(attori)
            });
       });
+      return this.actors;
 
-       return this.actors;
      },
      pulisci: function () {
        this.actors = [];
