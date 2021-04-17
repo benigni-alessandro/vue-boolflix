@@ -478,6 +478,9 @@
     height: 300px;
     width: auto;
   }
+  .searched_text{
+    padding-top: 40px;
+  }
   .card_film{
     margin: 0px 30px;
     height: 100%;
