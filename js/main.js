@@ -108,7 +108,7 @@ var app = new Vue({
          .then((response) => {
            response.data.cast.forEach((attori, i) => {
              this.actors.push(attori)
-           });
+           });        
       });
       return this.actors;
 
@@ -118,14 +118,14 @@ var app = new Vue({
      },
      opennav: function () {
         var vm = this;
+        console.log(vm.$refs);
         vm.$refs.mySidenav.style.width = "250px";
-        vm.$refs.main.style.marginleft = "250px";
-
+        vm.$refs.mySidenav.style.marginLeft = "0px";
      },
      closenav:function () {
        var vm = this;
        vm.$refs.mySidenav.style.width = "0";
-       vm.$refs.main.style.marginleft = "200px";
+       vm.$refs.mySidenav.style.marginLeft = "0";
      }
 
    }
